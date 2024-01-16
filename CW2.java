@@ -1,6 +1,6 @@
 /*
  Isaac Yeow Ming 23049679
- Foo Jia Seng 23055155
+ Foo Jia Seng 23055155 hello
  */
 import javax.swing.*;
 
