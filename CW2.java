@@ -1,13 +1,14 @@
 /*
  Isaac Yeow Ming 23049679
  Foo Jia Seng 23055155
+ hello test
  */
 import javax.swing.*;
 
 public class CW2{
     public static void main(String[] args){
         String currency;
-        currency = JOptionPane.showInputDialog(null, "Please Insert Your Currency (SGD/USD)");
+        currency = JOptionPane.showInputDialog(null, "Please Insert Your Currency \n(SGD/USD/JPY/EUR)");
         double excRate = 0;
         String symbol= "$";
 
