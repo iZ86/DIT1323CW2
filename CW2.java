@@ -23,22 +23,31 @@ public class CW2 {
             // Get currency type from user and validates if user entered valid input. If not, prompt user again.
             while (currencyType == "") {
                 currencyType = JOptionPane.showInputDialog(null, "Please insert your currency type.");
+                    if(currencyType == null){
+                        System.exit(0);
+                    }
                 // TODO: Need to have a better validation.
                 // TODO: Need to exit out of the program if user press cancel.
             }
 
             // Get amount to be exchanged by user and validates if user entered valid input. If not, prompt user again.
             while (amountEntered <= 0) {
-                amountEntered = Float.parseFloat(JOptionPane.showInputDialog(null, "Please insert the amount you wish to exchange."));
+                amountEntered = Float.parseFloat(JOptionPane.showInputDialog(null, "Your Currency chosen is: " + currencyType + "\nPlease insert the amount you wish to exchange."));
                 // TODO: Need to have a better validation.
                 // TODO: Need to exit out of the program if user press cancel.
+                if(amountEntered == 0){
+                    System.exit(0);
+                }
             }
 
             // Get the exchange rate (to MYR) from user and validates if user entered valid input. If not, prompt user again.
             while (exchangeRateToMYR <= 0) {
-                exchangeRateToMYR = Float.parseFloat(JOptionPane.showInputDialog(null, "Please insert the exchange rate (to MYR)."));
+                exchangeRateToMYR = Float.parseFloat(JOptionPane.showInputDialog(null,"Please insert the exchange rate (to MYR)."));
                 // TODO: Need to have a better validation.
                 // TODO: Need to exit out of the program if user press cancel.
+                if(exchangeRateToMYR == 0){
+                    System.exit(0);
+                }
             }
 
             // Calculates the result of the amount entered converted to MYR with the adminFee applied.
@@ -72,7 +81,7 @@ public class CW2 {
             currencyExchangeResult -= adminFee;
 
 
-            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+ currencyExchangeResult);
+            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+ currencyExchangeResult + "\n Your Admin Fee is: "+adminFee, "Result", JOptionPane.PLAIN_MESSAGE);
     }
 
         
