@@ -2,6 +2,8 @@
  Isaac Yeow Ming 23049679
  Foo Jia Seng 23055155
  */
+import java.text.DecimalFormat;
+
 import javax.swing.*;
 
 public class CW2 {
@@ -80,8 +82,8 @@ public class CW2 {
             // Applies admin fee to CURRENCYEXCHANGERESULT.
             currencyExchangeResult -= adminFee;
 
-
-            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+ currencyExchangeResult + "\n Your Admin Fee is: "+adminFee, "Result", JOptionPane.PLAIN_MESSAGE);
+            
+            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+  + "\n Your Admin Fee is: "+adminFee, "Result", JOptionPane.PLAIN_MESSAGE);
     }
 
         
