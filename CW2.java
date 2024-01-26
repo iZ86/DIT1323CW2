@@ -82,8 +82,8 @@ public class CW2 {
             // Applies admin fee to CURRENCYEXCHANGERESULT.
             currencyExchangeResult -= adminFee;
 
-            
-            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+  + "\n Your Admin Fee is: "+adminFee, "Result", JOptionPane.PLAIN_MESSAGE);
+            DecimalFormat df = new DecimalFormat("###,###,###.##");
+            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+ df.format(currencyExchangeResult)  + "\n Your Admin Fee is: "+df.format(adminFee), "Result", JOptionPane.PLAIN_MESSAGE);
     }
 
         
