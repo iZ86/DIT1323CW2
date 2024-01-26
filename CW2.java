@@ -21,7 +21,7 @@ public class CW2 {
             amountEntered = exchangeRateToMYR = currencyExchangeResult = adminRate = adminFee = 0;
 
             // Get currency type from user and validates if user entered valid input. If not, prompt user again.
-            while (currencyType == "") {
+            while (currencyType == "" || currencyType.length()!=3) {
                 currencyType = JOptionPane.showInputDialog(null, "Please insert your currency type.");
                     if(currencyType == null){
                         System.exit(0);
@@ -32,7 +32,7 @@ public class CW2 {
 
             // Get amount to be exchanged by user and validates if user entered valid input. If not, prompt user again.
             while (amountEntered <= 0) {
-                amountEntered = Float.parseFloat(JOptionPane.showInputDialog(null, "Your Currency chosen is: " + currencyType + "\nPlease insert the amount you wish to exchange."));
+                amountEntered = Float.parseFloat(JOptionPane.showInputDialog(null, "Your Currency chosen is: " + currencyType.toUpperCase() + "\nPlease insert the amount you wish to exchange."));
                 // TODO: Need to have a better validation.
                 // TODO: Need to exit out of the program if user press cancel.
                 if(amountEntered == 0){
