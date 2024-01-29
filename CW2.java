@@ -34,35 +34,46 @@ public class CW2 {
 
                 // Gets currency type from user.
                 currencyType = JOptionPane.showInputDialog(null,
-                        "Please insert your currency type.\nE.g. USD");
+                        "Please insert your currency type.\nE.g. USD.");
 
-                // To check if all the characters in CURRENCYTYPE is contained in APLHABETS.
-                for (int i = 0; i < currencyType.length(); i++) {
+                // To check if user did not press cancel.
+                if (currencyType != null) {
+                    // To check if all the characters in CURRENCYTYPE is contained in APLHABETS.
+                    for (int i = 0; i < currencyType.length(); i++) {
 
-                    // True if the ith character is in ALPHABETS. Otherwise, false.
-                    boolean isAlphabet = false;
+                        // True if the ith character is in ALPHABETS. Otherwise, false.
+                        boolean isAlphabet = false;
 
-                    /* To compare if ith character in CURRENCYTYPE is in ALPHABETS,
+                        /* To compare if ith character in CURRENCYTYPE is in ALPHABETS,
                         regardless of case.
                          */
-                    for (int j = 0; j < alphabets.length(); j++) {
+                        for (int j = 0; j < alphabets.length(); j++) {
 
-                        if (currencyType.toUpperCase().charAt(i) == alphabets.charAt(j)) {
+                            if (currencyType.toUpperCase().charAt(i) == alphabets.charAt(j)) {
 
-                            isAlphabet = true;
-                            break;
+                                isAlphabet = true;
+                                break;
+                            }
+
                         }
 
-                    }
+                        // if the ith character in CURRENCYTYPE is not contained in ALPHABETS, prompt user for new input.
+                        if (!isAlphabet) {
 
-                    // if the ith character in CURRENCYTYPE is not contained in ALPHABETS, prompt user for new input.
-                    if (!isAlphabet) {
-
-                        // Reset value for the loop.
-                        currencyType = "";
-                        break;
+                            // Reset value for the loop.
+                            currencyType = "";
+                            break;
+                        }
                     }
+                } else {
+                    // User pressed cancel.
+                    break;
                 }
+            }
+
+            // User pressed cancel.
+            if (currencyType == null) {
+                break;
             }
 
             /* Validates the amount entered by user input,
@@ -74,54 +85,64 @@ public class CW2 {
                 // Gets amount entered in string by user.
                 amountEnteredInString = JOptionPane.showInputDialog(null,
                         "Your Currency chosen is: " + currencyType.toUpperCase()
-                                + "\nPlease insert the amount of the chosen currency you wish to exchange.\nE.g. 1000");
+                                + "\nPlease insert the amount of the chosen currency you wish to exchange.\nE.g. 1000, 1023.45.");
 
-                // Tracks the number of decimal points that is in AMOUNTENTEREDINSTRING.
-                int numberOfDecimalPoints = 0;
+                // To check if user did not press cancel.
+                if (amountEnteredInString != null) {
+                    // Tracks the number of decimal points that is in AMOUNTENTEREDINSTRING.
+                    int numberOfDecimalPoints = 0;
 
-                /* Check if all the characters in AMOUNTENTEREDINSTRING,
-                is contained in CHARACTERSALLOWEDINCURRENCY,
-                 */
-                for (int i = 0; i < amountEnteredInString.length(); i++) {
+                    /* Check if all the characters in AMOUNTENTEREDINSTRING,
+                    is contained in CHARACTERSALLOWEDINCURRENCY,
+                    */
+                    for (int i = 0; i < amountEnteredInString.length(); i++) {
 
-                    // True if the ith character is in CHARACTERSALLOWEDINCURRENCY. Otherwise, false.
-                    boolean isCharacerAllowedInCurrency = false;
+                        // True if the ith character is in CHARACTERSALLOWEDINCURRENCY. Otherwise, false.
+                        boolean isCharacerAllowedInCurrency = false;
 
 
-                    for (int j = 0; j < charactersAllowedInCurrency.length(); j++) {
+                        for (int j = 0; j < charactersAllowedInCurrency.length(); j++) {
 
-                        // Checks if the ith character in AMOUNTENEREDINSTRING is in CHARACTERSALLOWEDINCURRENCY.
-                        if (amountEnteredInString.charAt(i) == charactersAllowedInCurrency.charAt(j)) {
+                            // Checks if the ith character in AMOUNTENEREDINSTRING is in CHARACTERSALLOWEDINCURRENCY.
+                            if (amountEnteredInString.charAt(i) == charactersAllowedInCurrency.charAt(j)) {
 
-                            // Checks if the ith character in AMOUNTENTEREDINSTRING is a decimal point.
-                            if (amountEnteredInString.charAt(i) == '.') {
+                                // Checks if the ith character in AMOUNTENTEREDINSTRING is a decimal point.
+                                if (amountEnteredInString.charAt(i) == '.') {
 
-                                // Increment NUMBEROFDECIMALPOINTS by 1.
-                                numberOfDecimalPoints += 1;
+                                    // Increment NUMBEROFDECIMALPOINTS by 1.
+                                    numberOfDecimalPoints += 1;
+                                }
+
+                                isCharacerAllowedInCurrency = true;
+                                break;
                             }
+                        }
+                        
+                        /* If the ith character is not contained in CHARACTERSALLOWEDINCURRENCY,
+                        or If the AMOUNTENENTEREDINSTRING has more than one decimal points,
+                        or If the AMOUNTENENTEREDINSTRING has more than 2 decimal places,
+                        or If the AMOUNTENENTEREDINSTRING is only a decimal point with no value at the front,
+                        prompt user for input again.
+                        Otherwise, the user input will be taken.
+                        */
+                        if (!isCharacerAllowedInCurrency || numberOfDecimalPoints > 1
+                                || (numberOfDecimalPoints == 1 && ((amountEnteredInString.length() - i) > 2))
+                                || (numberOfDecimalPoints == 1 && (amountEnteredInString.length()) == 1)) {
 
-                            isCharacerAllowedInCurrency = true;
+                            // Reset the values for the loop.
+                            amountEnteredInString = "";
                             break;
                         }
                     }
-
-                    /* If the ith character is not contained in CHARACTERSALLOWEDINCURRENCY,
-                    or If the AMOUNTENENTEREDINSTRING has more than one decimal points,
-                    or If the AMOUNTENENTEREDINSTRING has more than 2 decimal places,
-                    or If the AMOUNTENENTEREDINSTRING is only a decimal point with no value at the front,
-                    prompt user for input again.
-                    Otherwise, the user input will be taken.
-                     */
-                    if (!isCharacerAllowedInCurrency || numberOfDecimalPoints > 1
-                            || (numberOfDecimalPoints == 1 && ((amountEnteredInString.length() - i) > 2))
-                            || (numberOfDecimalPoints == 1 && (amountEnteredInString.length()) == 1)) {
-
-                        // Reset the values for the loop.
-                        amountEnteredInString = "";
-
-                        break;
-                    }
+                } else {
+                    // User pressed cancel.
+                    break;
                 }
+            }
+
+            // User pressed cancel.
+            if (amountEnteredInString == null) {
+                break;
             }
 
             // Parse AMOUNTENTEREDINSTRING from user input from data type String into data type Double.
@@ -135,55 +156,65 @@ public class CW2 {
 
                 // Gets exchange rate to MYR from user input.
                 exchangeRateToMYRInString = JOptionPane.showInputDialog(null,
-                        "Please insert the exchange rate (to MYR).\nE.g. 4.2");
-
-                // Tracks the number of decimal points that is in EXCHANGERATETOMYRINSTRING.
-                int numberOfDecimalPoints = 0;
-
-                /* Check if all the characters in EXCHANGERATETOMYRINSTRING,
-                is contained in CHARACTERSALLOWEDINCURRENCY,
-                 */
-                for (int i = 0; i < exchangeRateToMYRInString.length(); i++) {
-
-                    // True if the ith character is in CHARACTERSALLOWEDINCURRENCY. Otherwise, false.
-                    boolean isCharacerAllowedInCurrency = false;
+                        "Please insert the exchange rate (to MYR).\nE.g. 4.2, 5.23.");
 
 
-                    for (int j = 0; j < charactersAllowedInCurrency.length(); j++) {
+                // To check if user did not press cancel.
+                if (exchangeRateToMYRInString != null) {
+                    // Tracks the number of decimal points that is in EXCHANGERATETOMYRINSTRING.
+                    int numberOfDecimalPoints = 0;
 
-                        // Checks if the ith character in EXCHANGERATETOMYRINSTRING is in CHARACTERSALLOWEDINCURRENCY.
-                        if (exchangeRateToMYRInString.charAt(i) == charactersAllowedInCurrency.charAt(j)) {
+                    /* Check if all the characters in EXCHANGERATETOMYRINSTRING,
+                    is contained in CHARACTERSALLOWEDINCURRENCY,
+                    */
+                    for (int i = 0; i < exchangeRateToMYRInString.length(); i++) {
 
-                            // Checks if the ith character in EXCHANGERATETOMYRINSTRING is a decimal point.
-                            if (exchangeRateToMYRInString.charAt(i) == '.') {
+                        // True if the ith character is in CHARACTERSALLOWEDINCURRENCY. Otherwise, false.
+                        boolean isCharacerAllowedInCurrency = false;
 
-                                // Increment NUMBEROFDECIMALPOINTS by 1.
-                                numberOfDecimalPoints += 1;
+
+                        for (int j = 0; j < charactersAllowedInCurrency.length(); j++) {
+
+                            // Checks if the ith character in EXCHANGERATETOMYRINSTRING is in CHARACTERSALLOWEDINCURRENCY.
+                            if (exchangeRateToMYRInString.charAt(i) == charactersAllowedInCurrency.charAt(j)) {
+
+                                // Checks if the ith character in EXCHANGERATETOMYRINSTRING is a decimal point.
+                                if (exchangeRateToMYRInString.charAt(i) == '.') {
+
+                                    // Increment NUMBEROFDECIMALPOINTS by 1.
+                                    numberOfDecimalPoints += 1;
+                                }
+
+                                isCharacerAllowedInCurrency = true;
+                                break;
                             }
+                        }
 
-                            isCharacerAllowedInCurrency = true;
+                        /* If the ith character is not contained in CHARACTERSALLOWEDINCURRENCY,
+                        or If the EXCHANGERATETOMYRINSTRING has more than one decimal points,
+                        or If the EXCHANGERATETOMYRINSTRING has more than 2 decimal places,
+                        or If the EXCHANGERATETOMYRINSTRING is only a decimal point with no value at the front,
+                        prompt user for input again.
+                        Otherwise, the user input will be taken.
+                        */
+                        if (!isCharacerAllowedInCurrency || numberOfDecimalPoints > 1
+                                || (numberOfDecimalPoints == 1 && ((exchangeRateToMYRInString.length() - i) > 2))
+                                || (numberOfDecimalPoints == 1 && (exchangeRateToMYRInString.length()) == 1)) {
+
+                            // Reset the values for the loop.
+                            exchangeRateToMYRInString = "";
                             break;
                         }
                     }
-
-                    /* If the ith character is not contained in CHARACTERSALLOWEDINCURRENCY,
-                    or If the EXCHANGERATETOMYRINSTRING has more than one decimal points,
-                    or If the EXCHANGERATETOMYRINSTRING has more than 2 decimal places,
-                    or If the EXCHANGERATETOMYRINSTRING is only a decimal point with no value at the front,
-                    prompt user for input again.
-                    Otherwise, the user input will be taken.
-                     */
-                    if (!isCharacerAllowedInCurrency || numberOfDecimalPoints > 1
-                            || (numberOfDecimalPoints == 1 && ((exchangeRateToMYRInString.length() - i) > 2))
-                            || (numberOfDecimalPoints == 1 && (exchangeRateToMYRInString.length()) == 1)) {
-
-                        // Reset the values for the loop.
-                        exchangeRateToMYRInString = "";
-
-                        break;
-                    }
+                } else {
+                    // User pressed cancel.
+                    break;
                 }
+            }
 
+            // User pressed cancel.
+            if (exchangeRateToMYRInString == null) {
+                break;
             }
 
             // Parse EXCHANGERATETOMYRINSTRING from user input from data type String into data type Double.

@@ -1,0 +1,89 @@
+This is to test the program (manually)
+
+Test #1 (Validation)
+Input #1: ABCDE
+Input #1: ABCDE-
+Input #1: AB_
+Input #1: abc
+
+Input #2: .
+Input #2: 23.23.23
+Input #2: 23,23.23
+Input #2: 23.234456
+Input #2: 45
+
+Input #3: .
+Input #3: 23.23.23
+Input #3: 23,23.23
+Input #3: 23.234456
+Input #4: 5
+
+Output: 244.44
+Output: 0.56
+
+Test #2 (Cancel)
+Input #1: ABCDE
+Input #1: ABCDE-
+Input #1: AB_
+Input #1: abc
+Input #1 -> Cancel
+Program exit with code 0
+
+Input #1: ABCDE-
+Input #1: AB_
+Input #1: abc
+
+Input #2: .
+Input #2: 23.23.23
+Input #2: 23,23.23
+Input #2: 23.234456
+Input #2: 45
+Input #2 -> Cancel
+Program exit with code 0
+
+Input #1: ABCDE-
+Input #1: AB_
+Input #1: abc
+
+Input #2: 23,23.23
+Input #2: 23.234456
+Input #2: 45
+
+Input #3: .
+Input #3: 23.23.23
+Input #3: 23,23.23
+Input #3 -> Cancel
+Program exit with code 0
+
+Test #3 (Calculation)
+Input #1: ABC
+Input #2: 1
+Input #3: 1
+Output #1: 0.75
+Output #2: 0.25
+
+Input #1: ABC
+Input #2: 1.2
+Input #3: 1
+Output #1: 1.19
+Output #2: 0.01
+
+Input #1: ABC
+Input #2: 1.02
+Input #3: 1
+Output #1: 1.01
+Output #2: 0.01
+
+Input #1: ABC
+Input #2: 2000
+Input #3: 2.2
+Output #1: 4378
+Output #2: 22
+
+Input #1: ABC
+Input #2: 2000.2
+Input #3: 2.2
+Output #1: 4390.43
+Output #2: 10.01
+
+
