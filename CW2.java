@@ -31,7 +31,7 @@ public class CW2 {
 
                 // Gets currency type from user.
                 currencyType = JOptionPane.showInputDialog(null,
-                        "Please insert your currency type.\nE.g. USD.");
+                        "Please insert the currency type you wish to exchange to MYR.\nE.g. USD.");
 
                 // To check if user did not press cancel.
                 if (currencyType != null) {
@@ -81,8 +81,8 @@ public class CW2 {
 
                 // Gets amount entered in string by user.
                 amountEnteredInString = JOptionPane.showInputDialog(null,
-                        "Your Currency chosen is: " + currencyType.toUpperCase()
-                                + "\nPlease insert the amount of the chosen currency you wish to exchange.\nE.g. 1000, 1023.45.");
+                        "Currency type chosen: " + currencyType.toUpperCase()
+                                + "\nPlease insert the amount of the chosen currency that you wish to exchange to MYR.\nE.g. 1000, 1023.45.");
 
                 // To check if user did not press cancel.
                 if (amountEnteredInString != null) {
@@ -152,8 +152,8 @@ public class CW2 {
             while (exchangeRateToMYRInString.isBlank()) {
 
                 // Gets exchange rate to MYR from user input.
-                exchangeRateToMYRInString = JOptionPane.showInputDialog(null,
-                        "Please insert the exchange rate (to MYR).\nE.g. 3, 4.20.");
+                exchangeRateToMYRInString = JOptionPane.showInputDialog(null, "Currency type chosen: " + currencyType.toUpperCase() 
+				+ "\nPlease insert the exchange rate of the chosen currency to MYR.\nE.g. 3, 4.20.");
 
 
                 // To check if user did not press cancel.
@@ -243,7 +243,7 @@ public class CW2 {
 
             DecimalFormat df = new DecimalFormat("###,###,###.00");
             JOptionPane.showMessageDialog(null,
-                    "Type of currency exchanged: " + currencyType
+			    "Currency type exchanged: " + currencyType.toUpperCase()
                             + "\nAdmin fee: RM" + df.format(adminFee)
                             + "\nTotal amount exchanged (admin fee applied): RM" + df.format(currencyExchangeResult),
                     "Result", JOptionPane.PLAIN_MESSAGE);
