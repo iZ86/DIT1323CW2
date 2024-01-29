@@ -7,10 +7,7 @@ import java.text.DecimalFormat;
 import javax.swing.*;
 
 public class CW2 {
-    // TODO: Proper semantics
-    // TODO: Check if the rounding up is correct and if the rounding up method can be applied to this project.
-    // TODO: Check if the math is correct.
-    // TODO: Maybe some more design changes and read up the question more.
+    
     public static void main(String[] args) {
 
         while (true) {
