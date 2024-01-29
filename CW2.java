@@ -1,4 +1,4 @@
-/*
+/**
  Isaac Yeow Ming 23049679
  Foo Jia Seng 23055155
  */
@@ -189,42 +189,35 @@ public class CW2 {
             // Parse EXCHANGERATETOMYRINSTRING from user input from data type String into data type Double.
             exchangeRateToMYR = Double.parseDouble(exchangeRateToMYRInString);
 
-            // TODO: Refine everything below here.
-
-            // Calculates the result of the amount entered converted to MYR with the adminFee applied.
+            // Calculates the result of currency exchange.
             currencyExchangeResult = (amountEntered * exchangeRateToMYR);
-
-            // Rounds up to CUURRENCYEXCHANGERESULT to 2 decimal point.
-            currencyExchangeResult = (float) (Math.round(currencyExchangeResult * 100) / 100.0);
-
 
             // Gets the admin rate.
             if (currencyExchangeResult <= 2000) {
                 adminRate = 0.0025;
-            }
-            else if (currencyExchangeResult <= 5000){
+
+            } else if (currencyExchangeResult <= 5000) {
                 adminRate = 0.005;
-            }
-            else if(currencyExchangeResult <= 10000){
+
+            } else if (currencyExchangeResult <= 10000) {
                 adminRate = 0.0075;
-            }
-            else {
+
+            } else {
                 adminRate = 0.01;
+
             }
 
             // Calculates the admin fee.
             adminFee = currencyExchangeResult * adminRate;
 
-            // Rounds up ADMINFEE to 2 decimal points.
-            adminFee = (float) ((Math.round(adminFee * 100)) / 100.0);
-
             // Applies admin fee to CURRENCYEXCHANGERESULT.
             currencyExchangeResult -= adminFee;
 
             DecimalFormat df = new DecimalFormat("###,###,###.##");
-            JOptionPane.showMessageDialog(null, "Total amount exchanged is RM"+ df.format(currencyExchangeResult)  + "\n Your Admin Fee is: "+df.format(adminFee), "Result", JOptionPane.PLAIN_MESSAGE);
-    }
-
-        
+            JOptionPane.showMessageDialog(null,
+                    "Total amount exchanged is RM" + df.format(currencyExchangeResult)
+                            + "\n Your Admin Fee is: " + df.format(adminFee),
+                    "Result", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 }
