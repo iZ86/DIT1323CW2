@@ -33,7 +33,8 @@ public class CW2 {
             while (currencyType.isBlank() || currencyType.length() != 3) {
 
                 // Gets currency type from user.
-                currencyType = JOptionPane.showInputDialog(null, "Please insert your currency type.");
+                currencyType = JOptionPane.showInputDialog(null,
+                        "Please insert your currency type.\nE.g. USD");
 
                 // To check if all the characters in CURRENCYTYPE is contained in APLHABETS.
                 for (int i = 0; i < currencyType.length(); i++) {
@@ -71,7 +72,9 @@ public class CW2 {
             while (amountEnteredInString.isBlank()) {
 
                 // Gets amount entered in string by user.
-                amountEnteredInString = JOptionPane.showInputDialog(null, "Your Currency chosen is: " + currencyType.toUpperCase() + "\nPlease insert the amount you wish to exchange.");
+                amountEnteredInString = JOptionPane.showInputDialog(null,
+                        "Your Currency chosen is: " + currencyType.toUpperCase()
+                                + "\nPlease insert the amount of the chosen currency you wish to exchange.\nE.g. 1000");
 
                 // Tracks the number of decimal points that is in AMOUNTENTEREDINSTRING.
                 int numberOfDecimalPoints = 0;
@@ -131,7 +134,8 @@ public class CW2 {
             while (exchangeRateToMYRInString.isBlank()) {
 
                 // Gets exchange rate to MYR from user input.
-                exchangeRateToMYRInString = JOptionPane.showInputDialog(null, "Please insert the exchange rate (to MYR).");
+                exchangeRateToMYRInString = JOptionPane.showInputDialog(null,
+                        "Please insert the exchange rate (to MYR).\nE.g. 4.2");
 
                 // Tracks the number of decimal points that is in EXCHANGERATETOMYRINSTRING.
                 int numberOfDecimalPoints = 0;
