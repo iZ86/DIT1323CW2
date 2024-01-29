@@ -153,7 +153,7 @@ public class CW2 {
 
                 // Gets exchange rate to MYR from user input.
                 exchangeRateToMYRInString = JOptionPane.showInputDialog(null,
-                        "Please insert the exchange rate (to MYR).\nE.g. 4.2, 5.23.");
+                        "Please insert the exchange rate (to MYR).\nE.g. 3, 4.20.");
 
 
                 // To check if user did not press cancel.
@@ -241,10 +241,11 @@ public class CW2 {
             // Applies admin fee to CURRENCYEXCHANGERESULT.
             currencyExchangeResult -= adminFee;
 
-            DecimalFormat df = new DecimalFormat("###,###,###.##");
+            DecimalFormat df = new DecimalFormat("###,###,###.00");
             JOptionPane.showMessageDialog(null,
-                    "Total amount exchanged is RM" + df.format(currencyExchangeResult)
-                            + "\n Your Admin Fee is: " + df.format(adminFee),
+                    "Type of currency exchanged: " + currencyType
+                            + "\nAdmin fee: RM" + df.format(adminFee)
+                            + "\nTotal amount exchanged (admin fee applied): RM" + df.format(currencyExchangeResult),
                     "Result", JOptionPane.PLAIN_MESSAGE);
         }
     }
