@@ -62,6 +62,12 @@ public class CW2 {
                             break;
                         }
                     }
+
+                    // Prompt user that their input, is not valid.
+                    if (currencyType.isBlank() || currencyType.length() != 3) {
+                        JOptionPane.showMessageDialog(null, "Please enter joe");
+                    }
+
                 } else {
                     // User pressed cancel.
                     break;
@@ -130,6 +136,11 @@ public class CW2 {
                             amountEnteredInString = "";
                             break;
                         }
+                    }
+
+                    // Prompt user that their input is invalid.
+                    if (amountEnteredInString.isBlank()) {
+                        JOptionPane.showMessageDialog(null, "Please enter joe");
                     }
                 } else {
                     // User pressed cancel.
@@ -203,6 +214,11 @@ public class CW2 {
                             break;
                         }
                     }
+
+                    // Prompts user if their input is invalid.
+                    if (exchangeRateToMYRInString.isBlank()) {
+                        JOptionPane.showMessageDialog(null, "Please enter joe");
+                    }
                 } else {
                     // User pressed cancel.
                     break;
@@ -241,6 +257,7 @@ public class CW2 {
             // Applies admin fee to CURRENCYEXCHANGERESULT.
             currencyExchangeResult -= adminFee;
 
+            // TODO: Maybe add a confirmation if they want to continue.
             DecimalFormat df = new DecimalFormat("###,###,###.00");
             JOptionPane.showMessageDialog(null,
 			    "Currency type exchanged: " + currencyType.toUpperCase()
