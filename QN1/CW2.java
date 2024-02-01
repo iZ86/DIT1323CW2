@@ -2,6 +2,9 @@
  Isaac Yeow Ming 23049679
  Foo Jia Seng 23055155
  */
+
+package QN1;
+
 import java.text.DecimalFormat;
 
 import javax.swing.*;
@@ -17,7 +20,7 @@ public class CW2 {
             String amountEnteredInString = "";
             String exchangeRateToMYRInString = "";
             String alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            String charactersAllowedInCurrency = ".012345679";
+            String charactersAllowedInCurrency = ".0123456789";
             double amountEntered = 0;
             double exchangeRateToMYR = 0;
             double currencyExchangeResult = 0;
@@ -65,7 +68,10 @@ public class CW2 {
 
                     // Prompt user that their input, is not valid.
                     if (currencyType.isBlank() || currencyType.length() != 3) {
-                        JOptionPane.showMessageDialog(null, "Please enter joe");
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter a valid currency type!\n-3 letters only.\n-E.g. USD, SGD.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else {
@@ -88,7 +94,7 @@ public class CW2 {
                 // Gets amount entered in string by user.
                 amountEnteredInString = JOptionPane.showInputDialog(null,
                         "Currency type chosen: " + currencyType.toUpperCase()
-                                + "\nPlease insert the amount of the chosen currency that you wish to exchange to MYR.\nE.g. 1000, 1023.45.");
+                                + "\nPlease insert the amount of the chosen currency that you wish to exchange to MYR. \nE.g. 1000, 1023.45.");
 
                 // To check if user did not press cancel.
                 if (amountEnteredInString != null) {
@@ -140,7 +146,10 @@ public class CW2 {
 
                     // Prompt user that their input is invalid.
                     if (amountEnteredInString.isBlank()) {
-                        JOptionPane.showMessageDialog(null, "Please enter joe");
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter a valid amount!\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     // User pressed cancel.
@@ -163,8 +172,9 @@ public class CW2 {
             while (exchangeRateToMYRInString.isBlank()) {
 
                 // Gets exchange rate to MYR from user input.
-                exchangeRateToMYRInString = JOptionPane.showInputDialog(null, "Currency type chosen: " + currencyType.toUpperCase() 
-				+ "\nPlease insert the exchange rate of the chosen currency to MYR.\nE.g. 3, 4.20.");
+                exchangeRateToMYRInString = JOptionPane.showInputDialog(null, "Currency type chosen: "
+                        + currencyType.toUpperCase()
+                        + "\nPlease insert the exchange rate of the chosen currency to MYR.\nE.g. 3, 4.20.");
 
 
                 // To check if user did not press cancel.
@@ -217,7 +227,10 @@ public class CW2 {
 
                     // Prompts user if their input is invalid.
                     if (exchangeRateToMYRInString.isBlank()) {
-                        JOptionPane.showMessageDialog(null, "Please enter joe");
+                        JOptionPane.showMessageDialog(null,
+                                "Please enter a valid exchange rate!\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     // User pressed cancel.
@@ -257,13 +270,23 @@ public class CW2 {
             // Applies admin fee to CURRENCYEXCHANGERESULT.
             currencyExchangeResult -= adminFee;
 
-            // TODO: Maybe add a confirmation if they want to continue.
+            // Outputs exchange result.
             DecimalFormat df = new DecimalFormat("###,###,###.00");
             JOptionPane.showMessageDialog(null,
-			    "Currency type exchanged: " + currencyType.toUpperCase()
+                    "Currency type exchanged: " + currencyType.toUpperCase()
                             + "\nAdmin fee: RM" + df.format(adminFee)
                             + "\nTotal amount exchanged (admin fee applied): RM" + df.format(currencyExchangeResult),
                     "Result", JOptionPane.PLAIN_MESSAGE);
+
+            // Prompts user if they wish to exchange another type of currency.
+            int continueExchange = JOptionPane.showConfirmDialog(null, "Do you wish do another exchange? ",
+                    "Continue exchange?",
+                    JOptionPane.YES_NO_OPTION);
+
+            // If user presses "no" or "x", exit program.
+            if (continueExchange == 1 || continueExchange == -1) {
+                break;
+            }
         }
     }
 }
