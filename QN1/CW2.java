@@ -3,13 +3,12 @@
  Foo Jia Seng 23055155
  */
 
-package QN1;
 
 import java.text.DecimalFormat;
 
 import javax.swing.*;
 
-public class CW2 {
+public class Main {
     
     public static void main(String[] args) {
 
