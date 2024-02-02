@@ -5,7 +5,6 @@
 
 
 import java.text.DecimalFormat;
-
 import javax.swing.*;
 
 public class Main {
@@ -74,7 +73,6 @@ public class Main {
                                 "Currency Exchange Application",
                                 JOptionPane.ERROR_MESSAGE);
                     }
-
                 } else {
                     // User pressed cancel.
                     break;
@@ -110,7 +108,7 @@ public class Main {
                     for (int i = 0; i < amountEnteredInString.length(); i++) {
 
                         // True if the ith character is in CHARACTERSALLOWEDINCURRENCY. Otherwise, false.
-                        boolean isCharacerAllowedInCurrency = false;
+                        boolean isCharacterAllowedInCurrency = false;
 
 
                         for (int j = 0; j < charactersAllowedInCurrency.length(); j++) {
@@ -125,7 +123,7 @@ public class Main {
                                     numberOfDecimalPoints += 1;
                                 }
 
-                                isCharacerAllowedInCurrency = true;
+                                isCharacterAllowedInCurrency = true;
                                 break;
                             }
                         }
@@ -137,7 +135,7 @@ public class Main {
                         prompt user for input again.
                         Otherwise, the user input will be taken.
                         */
-                        if (!isCharacerAllowedInCurrency || numberOfDecimalPoints > 1
+                        if (!isCharacterAllowedInCurrency || numberOfDecimalPoints > 1
                                 || (numberOfDecimalPoints == 1 && ((amountEnteredInString.length() - i) > 2))
                                 || (numberOfDecimalPoints == 1 && (amountEnteredInString.length()) == 1)) {
 
@@ -193,7 +191,7 @@ public class Main {
                     for (int i = 0; i < exchangeRateToMYRInString.length(); i++) {
 
                         // True if the ith character is in CHARACTERSALLOWEDINCURRENCY. Otherwise, false.
-                        boolean isCharacerAllowedInCurrency = false;
+                        boolean isCharacterAllowedInCurrency = false;
 
 
                         for (int j = 0; j < charactersAllowedInCurrency.length(); j++) {
@@ -208,7 +206,7 @@ public class Main {
                                     numberOfDecimalPoints += 1;
                                 }
 
-                                isCharacerAllowedInCurrency = true;
+                                isCharacterAllowedInCurrency = true;
                                 break;
                             }
                         }
@@ -220,7 +218,7 @@ public class Main {
                         prompt user for input again.
                         Otherwise, the user input will be taken.
                         */
-                        if (!isCharacerAllowedInCurrency || numberOfDecimalPoints > 1
+                        if (!isCharacterAllowedInCurrency || numberOfDecimalPoints > 1
                                 || (numberOfDecimalPoints == 1 && ((exchangeRateToMYRInString.length() - i) > 2))
                                 || (numberOfDecimalPoints == 1 && (exchangeRateToMYRInString.length()) == 1)) {
 
