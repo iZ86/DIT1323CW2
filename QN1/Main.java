@@ -33,7 +33,9 @@ public class Main {
 
                 // Gets currency type from user.
                 currencyType = JOptionPane.showInputDialog(null,
-                        "Please insert the currency type you wish to exchange to MYR.\nE.g. USD.");
+                        "Please insert the currency type you wish to exchange to MYR.\nE.g. USD.",
+                        "Currency Exchange Application",
+                        JOptionPane.QUESTION_MESSAGE);
 
                 // To check if user did not press cancel.
                 if (currencyType != null) {
@@ -93,7 +95,9 @@ public class Main {
                 // Gets amount entered in string by user.
                 amountEnteredInString = JOptionPane.showInputDialog(null,
                         "Currency type chosen: " + currencyType.toUpperCase()
-                                + "\nPlease insert the amount of the chosen currency that you wish to exchange to MYR. \nE.g. 1000, 1023.45.");
+                                + "\nPlease insert the amount of the chosen currency that you wish to exchange to MYR. \nE.g. 1000, 1023.45.",
+                        "Currency Exchange Application",
+                        JOptionPane.QUESTION_MESSAGE);
 
                 // To check if user did not press cancel.
                 if (amountEnteredInString != null) {
@@ -173,7 +177,9 @@ public class Main {
                 // Gets exchange rate to MYR from user input.
                 exchangeRateToMYRInString = JOptionPane.showInputDialog(null, "Currency type chosen: "
                         + currencyType.toUpperCase()
-                        + "\nPlease insert the exchange rate of the chosen currency to MYR.\nE.g. 3, 4.20.");
+                        + "\nPlease insert the exchange rate of the chosen currency to MYR.\nE.g. 3, 4.20.",
+                        "Currency Exchange Application",
+                        JOptionPane.QUESTION_MESSAGE);
 
 
                 // To check if user did not press cancel.
@@ -279,7 +285,7 @@ public class Main {
 
             // Prompts user if they wish to exchange another type of currency.
             int continueExchange = JOptionPane.showConfirmDialog(null, "Do you wish do another exchange? ",
-                    "Continue exchange?",
+                    "Currency Exchange Application",
                     JOptionPane.YES_NO_OPTION);
 
             // If user presses "no" or "x", exit program.
