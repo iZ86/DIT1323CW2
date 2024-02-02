@@ -71,7 +71,7 @@ public class Main {
                     if (currencyType.isBlank() || currencyType.length() != 3) {
                         JOptionPane.showMessageDialog(null,
                                 "Please enter a valid currency type!\n-3 letters only.\n-E.g. USD, SGD.",
-                                "Error",
+                                "Currency Exchange Application",
                                 JOptionPane.ERROR_MESSAGE);
                     }
 
@@ -151,7 +151,7 @@ public class Main {
                     if (amountEnteredInString.isBlank()) {
                         JOptionPane.showMessageDialog(null,
                                 "Please enter a valid amount!\n-Must be >=0.\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
-                                "Error",
+                                "Currency Exchange Application",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
@@ -234,7 +234,7 @@ public class Main {
                     if (exchangeRateToMYRInString.isBlank()) {
                         JOptionPane.showMessageDialog(null,
                                 "Please enter a valid exchange rate!\n-Must be >=0.\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
-                                "Error",
+                                "Currency Exchange Application",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
@@ -278,10 +278,10 @@ public class Main {
             // Outputs exchange result.
             DecimalFormat df = new DecimalFormat("###,###,###.00");
             JOptionPane.showMessageDialog(null,
-                    "Currency type exchanged: " + currencyType.toUpperCase()
+                    "Results\n------------\nCurrency type exchanged: " + currencyType.toUpperCase()
                             + "\nAdmin fee: RM" + df.format(adminFee)
                             + "\nTotal amount exchanged (admin fee applied): RM" + df.format(currencyExchangeResult),
-                    "Result", JOptionPane.PLAIN_MESSAGE);
+                    "Currency Exchange Application", JOptionPane.PLAIN_MESSAGE);
 
             // Prompts user if they wish to exchange another type of currency.
             int continueExchange = JOptionPane.showConfirmDialog(null, "Do you wish do another exchange? ",
