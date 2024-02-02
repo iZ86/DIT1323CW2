@@ -146,7 +146,7 @@ public class Main {
                     // Prompt user that their input is invalid.
                     if (amountEnteredInString.isBlank()) {
                         JOptionPane.showMessageDialog(null,
-                                "Please enter a valid amount!\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
+                                "Please enter a valid amount!\n-Must be >=0.\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
                                 "Error",
                                 JOptionPane.ERROR_MESSAGE);
                     }
@@ -227,7 +227,7 @@ public class Main {
                     // Prompts user if their input is invalid.
                     if (exchangeRateToMYRInString.isBlank()) {
                         JOptionPane.showMessageDialog(null,
-                                "Please enter a valid exchange rate!\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
+                                "Please enter a valid exchange rate!\n-Must be >=0.\n-2 Decimal places or lesser.\n-No number separators (,).\n-E.g. 1000, 1023.45.",
                                 "Error",
                                 JOptionPane.ERROR_MESSAGE);
                     }
