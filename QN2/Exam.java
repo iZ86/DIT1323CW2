@@ -10,7 +10,7 @@ public class Exam{
         studentID = 0;
         studentName = "Isaac";
         studentLevel = "Diploma";
-        scores = new double[6];
+        scores = new double[5];
     }
 
     public Exam(int sID, String n, String l, double[] scr) {

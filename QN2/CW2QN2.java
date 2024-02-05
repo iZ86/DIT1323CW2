@@ -16,9 +16,10 @@ public class CW2QN2 {
     System.out.println("Please Input Your Study Level");
     String level = s.nextLine();
 
-    double[] storeScores = new double[6];
+    double[] storeScores = new double[5];
+    int size = storeScores.length;
     
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < size; i++) {
         System.out.println("Please Input Scores for Subject " + (i+1) + ":");
         
         storeScores[i] = s.nextDouble();
