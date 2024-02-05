@@ -19,11 +19,21 @@ public class CW2QN2 {
     double[] storeScores = new double[5];
     int size = storeScores.length;
     
-    for(int i = 0; i < size; i++) {
+    boolean j = true;
+    while(j) {
+        j = false;
+        for(int i = 0; i < size; i++) {
         System.out.println("Please Input Scores for Subject " + (i+1) + ":");
         
         storeScores[i] = s.nextDouble();
-    
+            
+            for(double scores:storeScores) {
+                if(storeScores[i] <= 0 || storeScores[i] > 100 || String.valueOf(scores).matches(".*[A-Za-z].*")) {
+                    j = true;
+                    
+                }
+            }
+        }
     }
     s.close();
 
