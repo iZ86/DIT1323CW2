@@ -1,59 +1,55 @@
-import java.text.DecimalFormat;
 
-public class Exam{
+import java.text.DecimalFormat;
+// TODO: Add comments.
+// TODO: Maybe change the toString method.
+// TODO: Maybe revaluate the scores variable and methods.
+public class Exam {
     private int studentID;
     private String studentName;
     private String studentLevel;  
     private double[] scores;
-    
-    public Exam() {
-        studentID = 0;
-        studentName = "Isaac";
-        studentLevel = "Diploma";
-        scores = new double[5];
-    }
 
-    public Exam(int sID, String n, String l, double[] scr) {
-        this.studentID = sID;
-        this.studentName = n;
-        this.studentLevel = l;
-        this.scores = scr;
+    public Exam(int studentID, String studentName, String studentLevel, double[] scores) {
+        this.studentID = studentID;
+        this.studentName = studentName;
+        this.studentLevel = studentLevel;
+        this.scores = scores;
 
     }
 
-    public void setStudentID(int ID) {
-        studentID = ID;
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
     }
 
     public int getStudentID() {
         return studentID;
     }
 
-    public void setStudentName(String n) {
-        studentName = n;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public String getStudentName() {
         return studentName;
     }
 
-    public void setStudentLevel(String l) {
-        studentLevel = l;
+    public void setStudentLevel(String studentLevel) {
+        this.studentLevel = studentLevel;
     }
 
     public String getStudentLevel() {
         return studentLevel;
     }
 
-    public void setScores(double[] scr) {
-        scores = scr;
+    public void setScores(double[] scores) {
+        this.scores = scores;
     }
 
-    public double getScores() {
-        return scores[5];
+    public double[] getScores() {
+        return scores;
     }
 
-    public double totalScores() {
+    public double calcTotalScores() {
         double totalScore = 0;
         for(double score : scores) {
             totalScore += score;
@@ -62,9 +58,9 @@ public class Exam{
 
     }
 
-    public double averageScores() {
+    public double calcAverageScores() {
      
-        return totalScores() / 6;
+        return calcTotalScores() / 6;
     }
 
     public double getMax() {
@@ -73,17 +69,17 @@ public class Exam{
         maxScore = Math.max(maxScore, newScore);
         }
         return maxScore;
-    }   
-    DecimalFormat df = new DecimalFormat("##.###");
+    }
     
     @Override
     public String toString() {
-        return "Your Name: " + getStudentName() 
-        + "\nYour Student ID: " + getStudentID() 
-        + "\nYour Student Level:" + getStudentLevel() 
-        + "\nYour Total Scores: " + df.format(totalScores())
-        + "\nYour Average Score: " + df.format(averageScores())
-        + "\nYour Maximum Score: " + getMax();
+        DecimalFormat df = new DecimalFormat("##.###");
+        return "Your Name: " + getStudentName()
+                + "\nYour Student ID: " + getStudentID()
+                + "\nYour Student Level:" + getStudentLevel()
+                + "\nYour Total Scores: " + df.format(calcTotalScores())
+                + "\nYour Average Score: " + df.format(calcAverageScores())
+                + "\nYour Maximum Score: " + getMax();
     }
-                                                
+
 }
