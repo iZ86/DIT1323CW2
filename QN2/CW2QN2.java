@@ -5,8 +5,11 @@ public class CW2QN2 {
  public static void main(String[] args) {
     
     Scanner s = new Scanner(System.in);
-    System.out.println("Please Input Your Student ID");
-    int id = s.nextInt();
+    while (!(s.hasNextInt())) {
+        System.out.println("Please Input Your Student ID");
+        s.nextLine();
+    }
+     int id = s.nextInt();
     
 
     System.out.println("Please Input Your Name");
