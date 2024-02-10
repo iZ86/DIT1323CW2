@@ -4,12 +4,12 @@ import java.text.DecimalFormat;
 // TODO: Maybe change the toString method.
 // TODO: Maybe revaluate the scores variable and methods.
 public class Exam {
-    private int studentID;
+    private String studentID;
     private String studentName;
     private String studentLevel;  
     private double[] scores;
 
-    public Exam(int studentID, String studentName, String studentLevel, double[] scores) {
+    public Exam(String studentID, String studentName, String studentLevel, double[] scores) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.studentLevel = studentLevel;
@@ -17,11 +17,11 @@ public class Exam {
 
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
         return studentID;
     }
 
