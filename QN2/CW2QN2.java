@@ -6,31 +6,14 @@ public class CW2QN2 {
     public static void main(String[] args) {
 
         String studentID, studentName, studyLevel;
-        double[] scoresOfSubject = new double[6];
-        int numberOfSubjects = scoresOfSubject.length;
+        int numberOfSubjects = 6;
+        double[] scoresOfSubject = new double[numberOfSubjects];
         Scanner s = new Scanner(System.in);
 
         studentID = getStudentIDFromUser(s);
         studentName = getStudentNameFromUser(s);
         studyLevel = getStudyLevelFromUser(s);
-
-
-        boolean j = true;
-        while (j) {
-            j = false;
-            for (int i = 0; i < numberOfSubjects; i++) {
-                System.out.println("Please Input Scores for Subject " + (i + 1) + ":");
-
-                scoresOfSubject[i] = s.nextDouble();
-
-                for (double scores : scoresOfSubject) {
-                    if (scoresOfSubject[i] <= 0 || scoresOfSubject[i] > 100 || String.valueOf(scores).matches(".*[A-Za-z].*")) {
-                        j = true;
-
-                    }
-                }
-            }
-        }
+        scoresOfSubject = getSubjectScoresFromUser(s, numberOfSubjects);
 
         s.close();
 
@@ -89,26 +72,154 @@ public class CW2QN2 {
         return studyLevel;
     }
 
-    /** Return true, iff char character is '.'.
+    /** Return the scores for NUMBEROFSUBJECTS subjects from user input if valid.
+     * Otherwise, prompt user for new score input.
+     */
+    public static double[] getSubjectScoresFromUser(Scanner s, int numberOfSubjects) {
+
+        double[] subjectScores = new double[numberOfSubjects];
+
+        for (int i = 0; i < numberOfSubjects; i++) {
+
+            String score = "";
+
+            while (score.isBlank()) {
+                System.out.println("Please Input Scores for Subject " + (i + 1) + ":");
+                score = validateScore(s.nextLine());
+            }
+
+            subjectScores[i] = Double.parseDouble(score);
+        }
+
+        return subjectScores;
+    }
+
+    /** Return the given studentID if valid.
+     * Otherwise, return empty string.
+     */
+    public static String validateStudentID(String studentID) {
+
+        // studentID must not contain any special characters.
+        return validateUserInput(studentID, !(isStringContainSpecialCharacters(studentID)));
+    }
+
+    /** Return the given studentName if valid.
+     * Otherwise, return empty string.
+     */
+    public static String validateStudentName(String studentName) {
+
+        // studentName must not contain any special characters or numbers.
+        return validateUserInput(studentName, isStringContainAlphabetOnly(studentName));
+    }
+
+    /** Return the given studyLevel if valid.
+     * Otherwise, return empty string.
+     */
+    public static String validateStudyLevel(String studyLevel) {
+
+        // studyLevel must not contain any special characters.
+        return validateUserInput(studyLevel, !(isStringContainSpecialCharacters(studyLevel)));
+    }
+
+    public static String validateScore(String score) {
+
+        // score must only contain
+        return validateUserInput(score, isStringValidScore(score));
+    }
+
+    /** Return the String USERINPUT if boolean VALID is true.
+     * Otherwise, return an empty string.
+     */
+    public static String validateUserInput(String userInput, boolean valid) {
+        if (!valid) {
+            userInput = "";
+            printInvalidUserInput();
+        }
+        return userInput;
+    }
+
+    /** Prints a message for an invalid user input. */
+    public static void printInvalidUserInput() {
+        System.out.println("Invalid input.");
+    }
+
+    /** Return true iff String STRING is a valid score.
      * Otherwise, return false.
      */
+    public static boolean isStringValidScore(String string) {
+        int numberOfDecimalPlaces = 0;
 
+        for (int i = 0; i < string.length(); i++) {
+            char character = string.charAt(i);
+
+            if (isCharacterDecimalPoint(character)) {
+                numberOfDecimalPlaces += 1;
+            }
+
+            if ((!isCharacterNumber(character) && !isCharacterDecimalPoint(character))
+                    || numberOfDecimalPlaces > 1
+                    || (numberOfDecimalPlaces == 1 && (string.length() == 1))
+                    || (numberOfDecimalPlaces == 1 && ((string.length() - i) > 3))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    /** Return true iff every character in String STRING is an alphabet.
+     * Otherwise, return false.
+     */
+    public static boolean isStringContainAlphabetOnly(String string) {
+
+        for (int i = 0; i < string.length(); i++) {
+
+            if (!(isCharacterAlphabet(string.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /** Return true iff every character in String STRING is a special character.
+     *  Otherwise, return false.
+     */
+    public static boolean isStringContainSpecialCharacters(String string) {
+
+        for (int i = 0; i < string.length(); i++) {
+
+            if (!(isCharacterNumber(string.charAt(i)) || isCharacterAlphabet(string.charAt(i)))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Return true, iff char CHARACTER is a decimal point.
+     * Otherwise, return false.
+     */
     public static boolean isCharacterDecimalPoint(char character) {
-        return (character == 46);
+        return character == 46;
     }
 
     /** Return true, iff char NUMBER iS a number.
      * Otherwise, return false.
      */
     public static boolean isCharacterNumber(char number) {
-        return (number >= 48 && number <= 57);
+        if (number >= 48 && number <= 57) {
+            return true;
+        }
+        return false;
     }
 
     /** Return true, iff char CHARACTER is an alphabet, regardless of case.
      * Otherwise, return false.
      */
     public static boolean isCharacterAlphabet(char character) {
-        
-        return ((character >= 65 && character <= 90) || (character >= 97 && character <= 122));
+        if ((character >= 65 && character <= 90)
+                || (character >= 97 && character <= 122)) {
+            return true;
+        }
+        return false;
     }
 }
