@@ -89,37 +89,49 @@ public class CW2QN2 {
         return studyLevel;
     }
 
+    /** Return the scores for NUMBEROFSUBJECTS subjects from user input if valid.
+     * Otherwise, prompt user for new score
+     */
+    public static double[] getSubjectScore(Scanner s, int numberOfSubjects) {
+        return null;
+    }
+
     /** Return the given studentID if valid.
      * Otherwise, return empty string.
      */
     public static String validateStudentID(String studentID) {
-        if (isStringContainSpecialCharacters(studentID)) {
-            studentID = "";
-            printInvalidUserInput();
-        }
-        return studentID;
+
+        // studentID must not contain any special characters.
+        return validateUserInput(studentID, !(isStringContainSpecialCharacters(studentID)));
     }
 
     /** Return the given studentName if valid.
      * Otherwise, return empty string.
      */
     public static String validateStudentName(String studentName) {
-        if (!(isStringContainAlphabetOnly(studentName))) {
-            studentName = "";
-            printInvalidUserInput();
-        }
-        return studentName;
+
+        // studentName must not contain any special characters or numbers.
+        return validateUserInput(studentName, isStringContainAlphabetOnly(studentName));
     }
 
     /** Return the given studyLevel if valid.
      * Otherwise, return empty string.
      */
     public static String validateStudyLevel(String studyLevel) {
-        if (isStringContainSpecialCharacters(studyLevel)) {
-            studyLevel = "";
+
+        // studyLevel must not contain any special characters.
+        return validateUserInput(studyLevel, !(isStringContainSpecialCharacters(studyLevel)));
+    }
+
+    /** Return the String USERINPUT if boolean VALID is true.
+     * Otherwise, return an empty string.
+     */
+    public static String validateUserInput(String userInput, boolean valid) {
+        if (!valid) {
+            userInput = "";
             printInvalidUserInput();
         }
-        return studyLevel;
+        return userInput;
     }
 
     /** Prints a message for an invalid user input. */
@@ -156,7 +168,7 @@ public class CW2QN2 {
         return false;
     }
 
-    /** Return true, iff char number is part of base 10 numbers.
+    /** Return true, iff char NUMBER iS a number.
      * Otherwise, return false.
      */
     public static boolean isCharacterNumber(char number) {
@@ -166,7 +178,7 @@ public class CW2QN2 {
         return false;
     }
 
-    /** Return true, iff char character is part of the english alphabet, regardless of case.
+    /** Return true, iff char CHARACTER is an alphabet, regardless of case.
      * Otherwise, return false.
      */
     public static boolean isCharacterAlphabet(char character) {
