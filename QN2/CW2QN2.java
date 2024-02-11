@@ -10,9 +10,9 @@ public class CW2QN2 {
         int numberOfSubjects = scoresOfSubject.length;
         Scanner s = new Scanner(System.in);
 
-        studentID = getStudentIDFromUserInput(s);
-        studentName = getStudentNameFromUserInput(s);
-        studyLevel = getStudyLevelFromUserInput(s);
+        studentID = getStudentIDFromUser(s);
+        studentName = getStudentNameFromUser(s);
+        studyLevel = getStudyLevelFromUser(s);
 
 
         boolean j = true;
@@ -43,7 +43,7 @@ public class CW2QN2 {
     /** Return studentID from user input after validation.
      * If invalid, prompt user for new studentID input.
      */
-    public static String getStudentIDFromUserInput(Scanner s) {
+    public static String getStudentIDFromUser(Scanner s) {
 
         String studentID = "";
 
@@ -59,7 +59,7 @@ public class CW2QN2 {
     /** Return studentName from user input after validation.
      * If invalid, prompt user for new studentName input.
      */
-    public static String getStudentNameFromUserInput(Scanner s) {
+    public static String getStudentNameFromUser(Scanner s) {
 
         String studentName = "";
 
@@ -75,7 +75,7 @@ public class CW2QN2 {
     /** Return studyLevel from user input after validation.
      * If invalid, prompt user for new studyLevel input.
      */
-    public static String getStudyLevelFromUserInput(Scanner s) {
+    public static String getStudyLevelFromUser(Scanner s) {
 
         String studyLevel = "";
 
@@ -89,103 +89,26 @@ public class CW2QN2 {
         return studyLevel;
     }
 
-    /** Return the scores for NUMBEROFSUBJECTS subjects from user input if valid.
-     * Otherwise, prompt user for new score
-     */
-    public static double[] getSubjectScore(Scanner s, int numberOfSubjects) {
-        return null;
-    }
-
-    /** Return the given studentID if valid.
-     * Otherwise, return empty string.
-     */
-    public static String validateStudentID(String studentID) {
-
-        // studentID must not contain any special characters.
-        return validateUserInput(studentID, !(isStringContainSpecialCharacters(studentID)));
-    }
-
-    /** Return the given studentName if valid.
-     * Otherwise, return empty string.
-     */
-    public static String validateStudentName(String studentName) {
-
-        // studentName must not contain any special characters or numbers.
-        return validateUserInput(studentName, isStringContainAlphabetOnly(studentName));
-    }
-
-    /** Return the given studyLevel if valid.
-     * Otherwise, return empty string.
-     */
-    public static String validateStudyLevel(String studyLevel) {
-
-        // studyLevel must not contain any special characters.
-        return validateUserInput(studyLevel, !(isStringContainSpecialCharacters(studyLevel)));
-    }
-
-    /** Return the String USERINPUT if boolean VALID is true.
-     * Otherwise, return an empty string.
-     */
-    public static String validateUserInput(String userInput, boolean valid) {
-        if (!valid) {
-            userInput = "";
-            printInvalidUserInput();
-        }
-        return userInput;
-    }
-
-    /** Prints a message for an invalid user input. */
-    public static void printInvalidUserInput() {
-        System.out.println("Invalid input.");
-    }
-
-
-    /** Return true iff every character in String STRING is an alphabet.
+    /** Return true, iff char character is '.'.
      * Otherwise, return false.
      */
-    public static boolean isStringContainAlphabetOnly(String string) {
 
-        for (int i = 0; i < string.length(); i++) {
-
-            if (!(isCharacterAlphabet(string.charAt(i)))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /** Return true iff every character in String STRING is a special character.
-     *  Otherwise, return false.
-     */
-    public static boolean isStringContainSpecialCharacters(String string) {
-
-        for (int i = 0; i < string.length(); i++) {
-
-            if (!(isCharacterNumber(string.charAt(i)) || isCharacterAlphabet(string.charAt(i)))) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean isCharacterDecimalPoint(char character) {
+        return (character == 46);
     }
 
     /** Return true, iff char NUMBER iS a number.
      * Otherwise, return false.
      */
     public static boolean isCharacterNumber(char number) {
-        if (number >= 48 && number <= 57) {
-            return true;
-        }
-        return false;
+        return (number >= 48 && number <= 57);
     }
 
     /** Return true, iff char CHARACTER is an alphabet, regardless of case.
      * Otherwise, return false.
      */
     public static boolean isCharacterAlphabet(char character) {
-        if ((character >= 65 && character <= 90)
-                || (character >= 97 && character <= 122)) {
-            return true;
-        }
-        return false;
+        
+        return ((character >= 65 && character <= 90) || (character >= 97 && character <= 122));
     }
 }
