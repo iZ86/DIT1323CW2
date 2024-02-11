@@ -7,7 +7,7 @@ public class CW2QN2 {
 
         String studentID, studentName, studyLevel;
         int numberOfSubjects = 6;
-        double[] scoresOfSubject = new double[numberOfSubjects];
+        double[] scoresOfSubject;
         Scanner s = new Scanner(System.in);
 
         studentID = getStudentIDFromUser(s);
@@ -121,10 +121,13 @@ public class CW2QN2 {
         return validateUserInput(studyLevel, !(isStringContainSpecialCharacters(studyLevel)));
     }
 
+    /** Return the given score if valid.
+     * Otherwise, return empty string.
+     */
     public static String validateScore(String score) {
 
         // score must only contain
-        return validateUserInput(score, isStringValidScore(score));
+        return validateUserInput(score, isValidScore(score));
     }
 
     /** Return the String USERINPUT if boolean VALID is true.
@@ -143,26 +146,32 @@ public class CW2QN2 {
         System.out.println("Invalid input.");
     }
 
-    /** Return true iff String STRING is a valid score.
+    /** Return true iff String SCORE is a valid score.
      * Otherwise, return false.
      */
-    public static boolean isStringValidScore(String string) {
+    public static boolean isValidScore(String score) {
         int numberOfDecimalPlaces = 0;
 
-        for (int i = 0; i < string.length(); i++) {
-            char character = string.charAt(i);
+        for (int i = 0; i < score.length(); i++) {
+            char character = score.charAt(i);
 
             if (isCharacterDecimalPoint(character)) {
                 numberOfDecimalPlaces += 1;
             }
 
+            /* Return false, if character is not a number and not a decimal place,
+            or if it has more than one decimal places,
+            or if the whole score is just one decimal place,
+            or if it has more than 2 decimal place.
+             */
             if ((!isCharacterNumber(character) && !isCharacterDecimalPoint(character))
                     || numberOfDecimalPlaces > 1
-                    || (numberOfDecimalPlaces == 1 && (string.length() == 1))
-                    || (numberOfDecimalPlaces == 1 && ((string.length() - i) > 3))) {
+                    || (numberOfDecimalPlaces == 1 && (score.length() == 1))
+                    || (numberOfDecimalPlaces == 1 && ((score.length() - i) > 3))) {
                 return false;
             }
         }
+        
         return true;
     }
 
