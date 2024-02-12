@@ -1,8 +1,6 @@
 
 import java.text.DecimalFormat;
-// TODO: Add comments.
-// TODO: Maybe change the toString method.
-// TODO: Maybe revaluate the scores variable and methods.
+
 public class Exam {
     /** Student ID. */
     private String studentID;
@@ -14,11 +12,11 @@ public class Exam {
     private double[] scores;
 
     /** A new exam object with 6 subject scores. */
-    public Exam(String studentID, String studentName, String studentLevel) {
+    public Exam(String studentID, String studentName, String studentLevel, double[] scores) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.studentLevel = studentLevel;
-        this.scores = new double[6];
+        this.scores = scores;
 
     }
 
@@ -81,9 +79,12 @@ public class Exam {
 
     /** Return max score. */
     public double getMax() {
-        double maxScore = scores[0];
-        for (double newScore : scores) {
-        maxScore = Math.max(maxScore, newScore);
+
+        double maxScore = 0;
+        for (double score : scores) {
+            if (score > maxScore) {
+                maxScore = score;
+            }
         }
         return maxScore;
     }
