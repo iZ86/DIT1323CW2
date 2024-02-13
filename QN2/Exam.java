@@ -92,12 +92,15 @@ public class Exam {
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("##.###");
-        return "Your Name: " + getStudentName()
-                + "\nYour Student ID: " + getStudentID()
-                + "\nYour Student Level:" + getStudentLevel()
-                + "\nYour Total Scores: " + df.format(calcTotalScores())
-                + "\nYour Average Score: " + df.format(calcAverageScores())
-                + "\nYour Maximum Score: " + getMax();
+        return "\n=======================================\n"
+                + "    Summary Report Only For You\n" 
+                + "  Your Name: " + getStudentName()
+                + "\n  Your Student ID: " + getStudentID()
+                + "\n  Your Student Level:" + getStudentLevel()
+                + "\n  Your Total Scores: " + df.format(calcTotalScores())
+                + "\n  Your Average Score: " + df.format(calcAverageScores())
+                + "\n  Your Maximum Score: " + getMax()
+                + "\n=======================================";
     }
 
 }
