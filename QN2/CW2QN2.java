@@ -5,22 +5,38 @@ public class CW2QN2 {
 
     public static void main(String[] args) {
 
+        // Initialization.
         String studentID, studentName, studentLevel;
         int numberOfSubjects = 6;
         double[] scoresOfSubject;
         Scanner s = new Scanner(System.in);
 
+        // Print header for the program.
+        printHeader();
+
+        // Get input from user.
         studentID = getStudentIDFromUser(s);
         studentName = getStudentNameFromUser(s);
         studentLevel = getStudentLevelFromUser(s);
         scoresOfSubject = getSubjectScoresFromUser(s, numberOfSubjects);
 
+        // Close the scanner.
         s.close();
 
+        // Initialize exam object with input from user.
         Exam e = new Exam(studentID, studentName, studentLevel, scoresOfSubject);
 
+        // Output data.
         System.out.println(e);
 
+    }
+
+    /** Print CLI header of the program. */
+    public static void printHeader() {
+        System.out.println("********************************************");
+        System.out.println("    Welcome to Sunway Education Group");
+        System.out.println("    Please Enter Your Personal Info");
+        System.out.println("********************************************");
     }
 
     /** Return studentID from user input after validation.
@@ -28,13 +44,10 @@ public class CW2QN2 {
      */
     public static String getStudentIDFromUser(Scanner s) {
 
+        // Initialization.
         String studentID = "";
-        System.out.println("********************************************");
-        System.out.println("    Welcome to Sunway Education Group");
-        System.out.println("    Please Enter Your Personal Info");
-        System.out.println("********************************************");
 
-        // Validates studentID input of user.
+        // Makes sure that studentID is valid before returning.
         while (studentID.isBlank()) {
             System.out.println("Please Input Your Student ID");
             studentID = validateStudentID(s.nextLine());
@@ -49,9 +62,10 @@ public class CW2QN2 {
      */
     public static String getStudentNameFromUser(Scanner s) {
 
+        // Initialization.
         String studentName = "";
 
-        // Validates studentName input of user.
+        // Make sure that studentName is valid before returning.
         while (studentName.isBlank()) {
             System.out.println("Please input your name");
             studentName = validateStudentName(s.nextLine());
@@ -66,9 +80,10 @@ public class CW2QN2 {
      */
     public static String getStudentLevelFromUser(Scanner s) {
 
+        // Initialization.
         String studentLevel = "";
 
-        // Validates studentLevel input of user.
+        // Makes sure that studentLevel is valid before returning.
         while (studentLevel.isBlank()) {
             System.out.println("Please enter your student level.");
             studentLevel = validateStudentLevel(s.nextLine());
@@ -79,27 +94,31 @@ public class CW2QN2 {
         return studentLevel;
     }
 
-    /** Return the scores for NUMBEROFSUBJECTS subjects from user input if valid.
+    /** Return double[] scores for NUMBEROFSUBJECTS subjects from user input if valid.
      * Otherwise, prompt user for new score input.
      */
     public static double[] getSubjectScoresFromUser(Scanner s, int numberOfSubjects) {
 
-        double[] subjectScores = new double[numberOfSubjects];
+        // Initialization
+        double[] scores = new double[numberOfSubjects];
 
+        // Prompt user for NUMBEROFSUBJECTS amount of scores.
         for (int i = 0; i < numberOfSubjects; i++) {
 
             String score = "";
 
+            // Makes sure that score is valid before adding it to double[] scores.
             while (score.isBlank()) {
                 System.out.println("Please Input Scores for Subject " + (i + 1) + ":");
                 score = validateScore(s.nextLine());
                 System.out.println("==================================");
             }
 
-            subjectScores[i] = Double.parseDouble(score);
+            // Change the datatype from String to double and add to double[] scores.
+            scores[i] = Double.parseDouble(score);
         }
 
-        return subjectScores;
+        return scores;
     }
 
     /** Return the given studentID if valid.
@@ -107,7 +126,7 @@ public class CW2QN2 {
      */
     public static String validateStudentID(String studentID) {
 
-        // studentID must not contain any special characters.
+        // studentID must not be blank or contain any special characters.
         return validateUserInput(studentID, isValidStudentID(studentID));
     }
 
@@ -116,7 +135,7 @@ public class CW2QN2 {
      */
     public static String validateStudentName(String studentName) {
 
-        // studentName must not contain any special characters or numbers.
+        // studentName must not be blank or contain any special characters excluding whitespace or numbers.
         return validateUserInput(studentName, isValidStudentName(studentName));
     }
 
@@ -125,7 +144,7 @@ public class CW2QN2 {
      */
     public static String validateStudentLevel(String studentLevel) {
 
-        // studentLevel must not contain any special characters.
+        // studentLevel must not be blank or contain any special characters excluding whitespace.
         return validateUserInput(studentLevel, isValidStudentLevel(studentLevel));
     }
 
@@ -134,12 +153,12 @@ public class CW2QN2 {
      */
     public static String validateScore(String score) {
 
-        // score must only contain
+        // score must not be blank or contain any special characters excluding decimal point or alphabets.
         return validateUserInput(score, isValidScore(score));
     }
 
     /** Return the String USERINPUT if boolean VALID is true.
-     * Otherwise, return an empty string.
+     * Otherwise, print an invalid message and return an empty string.
      */
     public static String validateUserInput(String userInput, boolean valid) {
         if (!valid) {
@@ -159,13 +178,16 @@ public class CW2QN2 {
      */
     public static boolean isValidStudentID(String studentID) {
 
+        // If studentID is blank.
         if (studentID.isBlank()) {
             return false;
         }
 
         for (int i = 0; i < studentID.length(); i++) {
+
             char character = studentID.charAt(i);
 
+            // Return false if char character is a special character.
             if (!(isCharacterAlphabet(character)) && !(isCharacterNumber(character))) {
                 return false;
             }
@@ -182,6 +204,7 @@ public class CW2QN2 {
      */
     public static boolean isValidStudentName(String studentName) {
 
+        // If studentName is blank.
         if (studentName.isBlank()) {
             return false;
         }
@@ -216,6 +239,7 @@ public class CW2QN2 {
      */
     public static boolean isValidStudentLevel(String studentLevel) {
 
+        // If studentLevel is blank.
         if (studentLevel.isBlank()) {
             return false;
         }
@@ -242,7 +266,10 @@ public class CW2QN2 {
         return true;
     }
 
-    /** Return true iff String SCORE is a valid score.
+    /** Return true iff String SCORE does not contain any special characters, excluding decimal point,
+     * and does not contain any alphabets,
+     * and does not contain more than one decimal point and more than two decimal place,
+     * and the score must be between 0 and 100.
      * Otherwise, return false.
      */
     public static boolean isValidScore(String score) {
@@ -263,7 +290,7 @@ public class CW2QN2 {
             /* Return false, if character is not a number or a decimal place,
             or if it has more than one decimal point,
             or if the whole score is just one decimal point,
-            or if it has more than 2 decimal places.
+            or if it has more than two decimal places.
              */
             if ((!isCharacterNumber(character) && !isCharacterDecimalPoint(character))
                     || numberOfDecimalPoint > 1
