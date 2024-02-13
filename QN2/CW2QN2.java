@@ -29,11 +29,16 @@ public class CW2QN2 {
     public static String getStudentIDFromUser(Scanner s) {
 
         String studentID = "";
+        System.out.println("********************************************");
+        System.out.println("    Welcome to Sunway Education Group");
+        System.out.println("    Please Enter Your Personal Info");
+        System.out.println("********************************************");
 
         // Validates studentID input of user.
         while (studentID.isBlank()) {
             System.out.println("Please Input Your Student ID");
             studentID = validateStudentID(s.nextLine());
+            System.out.println("================================");
         }
 
         return studentID;
@@ -50,6 +55,7 @@ public class CW2QN2 {
         while (studentName.isBlank()) {
             System.out.println("Please input your name");
             studentName = validateStudentName(s.nextLine());
+            System.out.println("================================");
         }
 
         return studentName;
@@ -66,6 +72,7 @@ public class CW2QN2 {
         while (studentLevel.isBlank()) {
             System.out.println("Please enter your study level.");
             studentLevel = validateStudentLevel(s.nextLine());
+            System.out.println("==================================");
 
         }
 
@@ -86,6 +93,7 @@ public class CW2QN2 {
             while (score.isBlank()) {
                 System.out.println("Please Input Scores for Subject " + (i + 1) + ":");
                 score = validateScore(s.nextLine());
+                System.out.println("==================================");
             }
 
             subjectScores[i] = Double.parseDouble(score);
@@ -253,11 +261,10 @@ public class CW2QN2 {
         }
 
         // subjectScore cannot be less than 0, or more than 100.
-        double subjectScore = Double.parseDouble(score);
+        Double subjectScore = Double.parseDouble(score);
         if (subjectScore < 0 || subjectScore > 100) {
             return false;
         }
-
         return true;
     }
 
