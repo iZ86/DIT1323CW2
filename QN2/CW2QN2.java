@@ -261,7 +261,7 @@ public class CW2QN2 {
         }
 
         // subjectScore cannot be less than 0, or more than 100.
-        Double subjectScore = Double.parseDouble(score);
+        double subjectScore = Double.parseDouble(score);
         if (subjectScore < 0 || subjectScore > 100) {
             return false;
         }
