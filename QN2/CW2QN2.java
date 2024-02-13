@@ -159,6 +159,10 @@ public class CW2QN2 {
      */
     public static boolean isValidStudentID(String studentID) {
 
+        if (studentID.isBlank()) {
+            return false;
+        }
+
         for (int i = 0; i < studentID.length(); i++) {
             char character = studentID.charAt(i);
 
@@ -177,6 +181,10 @@ public class CW2QN2 {
      * Otherwise, return false.
      */
     public static boolean isValidStudentName(String studentName) {
+
+        if (studentName.isBlank()) {
+            return false;
+        }
 
         for (int i = 0; i < studentName.length(); i++) {
             char character = studentName.charAt(i);
@@ -207,6 +215,11 @@ public class CW2QN2 {
      * Otherwise, return false.
      */
     public static boolean isValidStudentLevel(String studentLevel) {
+
+        if (studentLevel.isBlank()) {
+            return false;
+        }
+
         for (int i = 0; i < studentLevel.length(); i++) {
             char character = studentLevel.charAt(i);
 
