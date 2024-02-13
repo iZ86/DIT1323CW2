@@ -70,7 +70,7 @@ public class CW2QN2 {
 
         // Validates studentLevel input of user.
         while (studentLevel.isBlank()) {
-            System.out.println("Please enter your study level.");
+            System.out.println("Please enter your student level.");
             studentLevel = validateStudentLevel(s.nextLine());
             System.out.println("==================================");
 
