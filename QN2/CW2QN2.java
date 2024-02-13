@@ -225,6 +225,11 @@ public class CW2QN2 {
      * Otherwise, return false.
      */
     public static boolean isValidScore(String score) {
+
+        if (score.isBlank()) {
+            return false;
+        }
+        
         int numberOfDecimalPoint = 0;
 
         for (int i = 0; i < score.length(); i++) {
