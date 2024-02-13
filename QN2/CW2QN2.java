@@ -260,8 +260,6 @@ public class CW2QN2 {
         if (subjectScore < 0 || subjectScore > 100) {
             return false;
         }
-        
-
         return true;
     }
 
