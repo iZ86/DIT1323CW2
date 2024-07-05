@@ -1,5 +1,5 @@
 # README
-This is our project for DIT1323 Java Programming in January 2024 Sunway College in Sunway College.
+This is our project for DIT1323 Java Programming for January 2024 Sunway College in Sunway College.
 
 ## QN1 
 QN 1 is a currency calculator app, that converts any amount to MYR, that is made using JOptionPane as the GUI, user enters, 
